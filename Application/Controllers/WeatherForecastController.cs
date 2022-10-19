@@ -4,7 +4,7 @@ namespace Abobus.Application.Controllers;
 
 [ApiController]
 [Route("[controller]")]
-public class WeatherForecastController : ControllerBase
+public sealed class WeatherForecastController : ControllerBase
 {
     private static readonly string[] Summaries = new[]
     {
