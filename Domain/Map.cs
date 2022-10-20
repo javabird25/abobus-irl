@@ -1,6 +1,6 @@
 namespace Abobus.Domain;
 
-public sealed class Map
+public sealed class Map : IMap
 {
     public int Id { get; init; }
     public string Name { get; init; }
