@@ -1,7 +1,5 @@
 namespace Abobus.Domain;
 
-using Ardalis.SmartEnum;
-
 public interface IGameState
 {
 }

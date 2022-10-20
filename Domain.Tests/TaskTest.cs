@@ -1,8 +1,7 @@
-using Abobus.Domain;
 using Xunit;
 using FluentAssertions;
 
-namespace Domain.Tests;
+namespace Abobus.Domain.Tests;
 
 public class TaskTest
 {
