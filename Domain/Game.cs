@@ -1,10 +1,10 @@
 namespace Abobus.Domain;
 
-public sealed class Game
+public sealed class Game : IGame
 {
     public int Id { get; init; }
     public List<Player> Players { get; init; } = new();
-    public Dictionary<Player, PlayerRole> Roles = new();
+    public IPlayerRoleMap RoleMap { get; init; } = new PlayerRoleMap();
     public IMap Map { get; init; }
 
     public IGameState GameState
@@ -18,7 +18,6 @@ public sealed class Game
     }
 
     private IGameState _gameState = new LobbyGameState();
-
 
     public event Action<IGameState>? GameStateChanged;
     private readonly IGameConfig _config;

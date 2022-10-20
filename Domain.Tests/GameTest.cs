@@ -2,7 +2,7 @@ namespace Abobus.Domain.Tests;
 
 public class GameTest
 {
-    private readonly Game _game;
+    private readonly IGame _game;
 
     public GameTest()
     {

@@ -1,10 +1,13 @@
 namespace Abobus.Domain;
 
-public abstract class PlayerRole
+public interface IPlayerRole
 {
+    string Id { get; }
+    bool IsCrewmate { get; }
+    bool IsImpostor => !IsCrewmate;
 }
 
-public sealed class CrewmatePlayerRole : PlayerRole
+public sealed class CrewmatePlayerRole : IPlayerRole
 {
     public TaskList Tasks { get; init; }
     public LifeState LifeState { get; init; } = LifeState.Alive;
@@ -13,9 +16,14 @@ public sealed class CrewmatePlayerRole : PlayerRole
     {
         Tasks = tasks;
     }
+
+    public string Id => "crewmate";
+    public bool IsCrewmate => true;
 }
 
-public sealed class ImpostorPlayerRole : PlayerRole
+public sealed class ImpostorPlayerRole : IPlayerRole
 {
     public DateTime CanKillAfter { get; init; } = DateTime.UnixEpoch;
+    public string Id => "impostor";
+    public bool IsCrewmate => false;
 }
