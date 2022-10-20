@@ -6,7 +6,21 @@ public sealed class Game
     public List<Player> Players { get; init; } = new();
     public Dictionary<Player, PlayerRole> Roles = new();
     public IMap Map { get; init; }
-    public IGameState GameState { get; private set; } = new LobbyGameState();
+
+    public IGameState GameState
+    {
+        get => _gameState;
+        private set
+        {
+            _gameState = value;
+            GameStateChanged?.Invoke(value);
+        }
+    }
+
+    private IGameState _gameState = new LobbyGameState();
+
+
+    public event Action<IGameState>? GameStateChanged;
     private readonly IGameConfig _config;
 
     public Game(int id, IMap map, IGameConfig config)
@@ -19,5 +33,10 @@ public sealed class Game
     public void AddPlayer(Player player)
     {
         Players.Add(player);
+    }
+
+    public void Start()
+    {
+        GameState = new PlayingGameState();
     }
 }
