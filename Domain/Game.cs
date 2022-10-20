@@ -15,4 +15,9 @@ public sealed class Game
         Map = map;
         _config = config;
     }
+
+    public void AddPlayer(Player player)
+    {
+        Players.Add(player);
+    }
 }
