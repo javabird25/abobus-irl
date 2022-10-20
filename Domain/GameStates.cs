@@ -2,14 +2,17 @@ namespace Abobus.Domain;
 
 public interface IGameState
 {
+    string Id { get; }
 }
 
 public class LobbyGameState : IGameState
 {
+    public string Id => "lobby";
 }
 
 public class PlayingGameState : IGameState
 {
+    public string Id => "playing";
 }
 
 public class VotingGameState : IGameState
@@ -24,4 +27,6 @@ public class VotingGameState : IGameState
         Initiator = initiator;
         FoundDead = foundDead;
     }
+
+    public string Id => "voting";
 }
