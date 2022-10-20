@@ -1,7 +1,3 @@
-using FluentAssertions;
-using Moq;
-using Xunit;
-
 namespace Abobus.Domain.Tests;
 
 public class GameTest

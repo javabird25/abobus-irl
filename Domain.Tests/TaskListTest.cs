@@ -1,8 +1,5 @@
 namespace Abobus.Domain.Tests;
 
-using Abobus.Domain;
-using Xunit;
-using FluentAssertions;
 using System.Collections.Generic;
 
 public class TaskListTest
