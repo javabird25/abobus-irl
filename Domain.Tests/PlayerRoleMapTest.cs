@@ -2,7 +2,7 @@ namespace Abobus.Domain.Tests;
 
 using System;
 
-public class PlayerRoleMapTest
+public sealed class PlayerRoleMapTest
 {
     [Fact]
     public void SetRoleOf_ShouldSetRoleOfPlayer()

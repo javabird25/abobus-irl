@@ -5,17 +5,17 @@ public interface IGameState
     string Id { get; }
 }
 
-public class LobbyGameState : IGameState
+public sealed class LobbyGameState : IGameState
 {
     public string Id => "lobby";
 }
 
-public class PlayingGameState : IGameState
+public sealed class PlayingGameState : IGameState
 {
     public string Id => "playing";
 }
 
-public class VotingGameState : IGameState
+public sealed class VotingGameState : IGameState
 {
     public Vote Vote { get; init; }
     public Player Initiator { get; init; }

@@ -1,6 +1,6 @@
 namespace Abobus.Domain.Tests;
 
-public class GameTest
+public sealed class GameTest
 {
     private readonly IGame _game;
 

@@ -2,7 +2,7 @@ namespace Abobus.Domain.Tests;
 
 using System.Collections.Generic;
 
-public class TaskListTest
+public sealed class TaskListTest
 {
     [Fact]
     public void Tasks_GivenTaskList_ReturnsItsTasks()

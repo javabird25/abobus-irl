@@ -2,7 +2,7 @@ namespace Abobus.Domain.Tests.Actions;
 
 using Domain.Actions;
 
-public class ImpostorKilledCrewmateActionTest
+public sealed class ImpostorKilledCrewmateActionTest
 {
     [Fact]
     public void Validate_ReturnsTrueOnMatchingRoles()

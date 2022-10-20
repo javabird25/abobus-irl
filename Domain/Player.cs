@@ -1,6 +1,6 @@
 namespace Abobus.Domain;
 
-public class Player
+public sealed class Player
 {
     public int Id { get; init; }
     public string Name { get; init; }

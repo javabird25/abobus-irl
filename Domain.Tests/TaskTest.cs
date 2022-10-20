@@ -1,6 +1,6 @@
 namespace Abobus.Domain.Tests;
 
-public class TaskTest
+public sealed class TaskTest
 {
     [Fact]
     public void Description_GivenPuzzle_ReturnsItsDescription()
