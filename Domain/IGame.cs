@@ -2,7 +2,7 @@ namespace Abobus.Domain;
 
 public interface IGame
 {
-    int Id { get; init; }
+    Guid Id { get; init; }
     List<Player> Players { get; init; }
     IMap Map { get; init; }
     IGameState GameState { get; }

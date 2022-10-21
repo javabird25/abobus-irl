@@ -1,5 +1,7 @@
 namespace Abobus.Domain.Tests;
 
+using System;
+
 public sealed class GameTest
 {
     private readonly IGame _game;
@@ -8,7 +10,7 @@ public sealed class GameTest
     {
         var map = new Mock<IMap>();
         var config = new Mock<IGameConfig>();
-        _game = new Game(1, map.Object, config.Object);
+        _game = new Game(new Guid(), map.Object, config.Object);
     }
 
     [Fact]

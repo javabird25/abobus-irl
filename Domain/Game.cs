@@ -2,7 +2,7 @@ namespace Abobus.Domain;
 
 public sealed class Game : IGame
 {
-    public int Id { get; init; }
+    public Guid Id { get; init; }
     public List<Player> Players { get; init; } = new();
     public IMap Map { get; init; }
 
@@ -21,7 +21,7 @@ public sealed class Game : IGame
     public event Action<IGameState>? GameStateChanged;
     private readonly IGameConfig _config;
 
-    public Game(int id, IMap map, IGameConfig config)
+    public Game(Guid id, IMap map, IGameConfig config)
     {
         Id = id;
         Map = map;
