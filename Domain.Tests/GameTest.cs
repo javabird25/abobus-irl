@@ -16,7 +16,7 @@ public sealed class GameTest
     [Fact]
     public void AddPlayer_AddsPlayer()
     {
-        var player = new Player(1, "Nikita");
+        var player = new Player("Nikita");
 
         _game.AddPlayer(player);
 

@@ -2,14 +2,14 @@ namespace Abobus.Domain;
 
 public sealed class Player
 {
-    public int Id { get; init; }
+    public Guid Id { get; } = new();
+
     public string Name { get; init; }
 
     private IPlayerGameState _gameState = new InLobbyPlayerGameState();
 
-    public Player(int id, string name)
+    public Player(string name)
     {
-        Id = id;
         Name = name;
     }
 

@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebUI", "WebUI\WebUI.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain.Tests", "Domain.Tests\Domain.Tests.csproj", "{94E4DDA6-16BF-4718-863F-F449F9F8F63B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "Application\Application.csproj", "{12B01922-7A00-4D80-902A-C2AA9E1BA085}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{398AAD6E-8C6B-4F2B-93A4-38B08B7B4455}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +34,13 @@ Global
 		{94E4DDA6-16BF-4718-863F-F449F9F8F63B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{94E4DDA6-16BF-4718-863F-F449F9F8F63B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{94E4DDA6-16BF-4718-863F-F449F9F8F63B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{12B01922-7A00-4D80-902A-C2AA9E1BA085}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{12B01922-7A00-4D80-902A-C2AA9E1BA085}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{12B01922-7A00-4D80-902A-C2AA9E1BA085}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{12B01922-7A00-4D80-902A-C2AA9E1BA085}.Release|Any CPU.Build.0 = Release|Any CPU
+		{398AAD6E-8C6B-4F2B-93A4-38B08B7B4455}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{398AAD6E-8C6B-4F2B-93A4-38B08B7B4455}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{398AAD6E-8C6B-4F2B-93A4-38B08B7B4455}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{398AAD6E-8C6B-4F2B-93A4-38B08B7B4455}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
