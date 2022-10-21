@@ -35,7 +35,7 @@ public sealed class GamePassword
 
     private readonly int _value;
 
-    private GamePassword(int value)
+    public GamePassword(int value)
     {
         _value = value;
     }

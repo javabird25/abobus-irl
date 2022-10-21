@@ -7,7 +7,7 @@ public interface IPlayerGameState
 
 public sealed class InLobbyPlayerGameState : IPlayerGameState
 {
-    public string Id { get; }
+    public string Id => "lobby";
 }
 
 public sealed class CrewmatePlayerGameState : IPlayerGameState

@@ -20,7 +20,7 @@ public sealed class GameRepository : IGameRepository
         _mapRepository = mapRepository;
     }
 
-    public GamePassword CreateGame(string mapName, string configName)
+    public (IGame, GamePassword) CreateGame(string mapName, string configName)
     {
         _fileSystem.CreateDirectoryIfNotExists("/tmp/abobus");
         var passwordToGameIdMap = LoadPasswordToGameIdMap();
@@ -31,17 +31,17 @@ public sealed class GameRepository : IGameRepository
         passwordToGameIdMap.Add(password, game.Id);
         SavePasswordToGameIdMap(passwordToGameIdMap);
         SaveGame(game);
-        return password;
+        return (game, password);
     }
 
     private void SaveGame(IGame game)
     {
-        _fileSystem.WriteFileContents(GetGameFilePath(game), JsonSerializer.Serialize(game));
+        _fileSystem.WriteFileContents(GetGameFilePath(game.Id), JsonSerializer.Serialize(game));
     }
 
-    private string GetGameFilePath(IGame game)
+    private string GetGameFilePath(Guid gameId)
     {
-        return $"/tmp/abobus/{game.Id}.json";
+        return $"/tmp/abobus/{gameId}.json";
     }
 
     private PasswordToGameIdMap LoadPasswordToGameIdMap()
@@ -56,9 +56,17 @@ public sealed class GameRepository : IGameRepository
         _fileSystem.WriteFileContents(PasswordToGameIdMapFilePath, json);
     }
 
-    public Game GetGameByPassword(GamePassword password)
+    public IGame GetGameByPassword(GamePassword password)
     {
-        throw new NotImplementedException();
+        var passwordToGameIdMap = LoadPasswordToGameIdMap();
+        var gameId = passwordToGameIdMap.GetGameId(password);
+        var gameJson = _fileSystem.ReadFileContents(GetGameFilePath(gameId));
+        return JsonSerializer.Deserialize<Game>(gameJson);
+    }
+
+    public void UpdateGame(IGame game)
+    {
+        SaveGame(game);
     }
 }
 
