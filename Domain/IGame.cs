@@ -4,7 +4,6 @@ public interface IGame
 {
     int Id { get; init; }
     List<Player> Players { get; init; }
-    IPlayerRoleMap RoleMap { get; init; }
     IMap Map { get; init; }
     IGameState GameState { get; }
     event Action<IGameState>? GameStateChanged;

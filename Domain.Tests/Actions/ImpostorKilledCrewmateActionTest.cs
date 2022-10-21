@@ -1,21 +1,23 @@
 namespace Abobus.Domain.Tests.Actions;
 
+using System;
 using Domain.Actions;
 
 public sealed class ImpostorKilledCrewmateActionTest
 {
     [Fact]
-    public void Validate_ReturnsTrueOnMatchingRoles()
+    public void ModifyGame_MarksCrewmateAsKilled()
     {
-        var killer = new Player(1, "Killer");
-        var victim = new Player(2, "Victim");
-        var game = new Mock<IGame>();
-        game.Setup(g => g.RoleMap.RoleOf(killer)).Returns(new ImpostorPlayerRole());
-        game.Setup(g => g.RoleMap.RoleOf(victim)).Returns(new CrewmatePlayerRole(new TaskList()));
-        var action = new ImpostorKilledCrewmateAction { Sender = killer, Victim = victim };
+        var crewmate = new Player(1, "Crewmate");
+        crewmate.MakeCrewmate(new TaskList());
+        var impostor = new Player(2, "Impostor");
+        var config = new Mock<IGameConfig>();
+        config.Setup(c => c.Get("killCooldown", It.IsAny<TimeSpan>())).Returns(TimeSpan.FromMinutes(2));
+        impostor.MakeImpostor(config.Object);
+        var action = new ImpostorKilledCrewmateAction { Sender = impostor, Victim = crewmate };
 
-        var result = action.Validate(game.Object);
+        action.ModifyGame();
 
-        result.Should().BeTrue();
+        crewmate.IsAlive.Should().BeFalse();
     }
 }

@@ -4,7 +4,6 @@ public sealed class Game : IGame
 {
     public int Id { get; init; }
     public List<Player> Players { get; init; } = new();
-    public IPlayerRoleMap RoleMap { get; init; } = new PlayerRoleMap();
     public IMap Map { get; init; }
 
     public IGameState GameState
