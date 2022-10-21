@@ -1,4 +1,4 @@
-namespace Abobus.Application;
+namespace Abobus.WebUI;
 
 public sealed class WeatherForecast
 {
