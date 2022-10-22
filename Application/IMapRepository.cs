@@ -4,5 +4,5 @@ using Domain;
 
 public interface IMapRepository
 {
-    IMap GetMap();
+    IMap GetMap(string name);
 }

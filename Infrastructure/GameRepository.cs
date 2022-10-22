@@ -25,7 +25,7 @@ public sealed class GameRepository : IGameRepository
         _fileSystem.CreateDirectoryIfNotExists("/tmp/abobus");
         var passwordToGameIdMap = LoadPasswordToGameIdMap();
         var gameConfig = _gameConfigRepository.GetGameConfigByName(configName);
-        var map = _mapRepository.GetMap();
+        var map = _mapRepository.GetMap(mapName);
         var game = new Game(map, gameConfig);
         var password = GamePassword.Generate();
         passwordToGameIdMap.Add(password, game.Id);

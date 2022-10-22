@@ -1,8 +1,17 @@
+using Abobus.Application;
+using Abobus.Infrastructure;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddControllersWithViews();
+builder.Services
+    .AddTransient<IGameRepository, GameRepository>()
+    .AddTransient<IFIleSystem, FileSystem>()
+    .AddTransient<IMapRepository, MapRepository>()
+    .AddTransient<IAppFileSystemPaths, AppFileSystemPaths>()
+    .AddTransient<IGameConfigRepository, GameConfigRepository>();
 
 var app = builder.Build();
 
@@ -23,6 +32,6 @@ app.MapControllerRoute(
     pattern: "api/{controller}/{action=Index}/{id?}");
 app.MapControllers();
 
-app.MapFallbackToFile("index.html");;
+app.MapFallbackToFile("index.html");
 
 app.Run();

@@ -18,7 +18,7 @@ public sealed class GameController : ControllerBase
     [HttpPost]
     public IActionResult Create([FromBody] CreateGameRequest request)
     {
-        var (game, password) = _gameRepository.CreateGame("default", request.GameConfigName);
+        var (game, password) = _gameRepository.CreateGame(request.MapName, request.GameConfigName);
         game.JoinPlayer(request.Name);
         _gameRepository.UpdateGame(game);
         return Ok(new CreateGameResponse { GamePassword = password });
@@ -26,7 +26,7 @@ public sealed class GameController : ControllerBase
 
     [HttpPost]
     [Route("api/[controller]/[action]/{gamePassword:int}")]
-    public IActionResult Join(JoinGameRequest request, int gamePassword)
+    public IActionResult Join(int gamePassword, [FromBody] JoinGameRequest request)
     {
         var game = _gameRepository.GetGameByPassword(new GamePassword(gamePassword));
         game.JoinPlayer(request.Name);
@@ -38,6 +38,7 @@ public sealed class GameController : ControllerBase
 public sealed class CreateGameRequest
 {
     public string Name { get; set; }
+    public string MapName { get; set; }
     public string GameConfigName { get; set; }
 }
 
