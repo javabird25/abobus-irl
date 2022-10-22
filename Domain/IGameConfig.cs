@@ -2,7 +2,7 @@ namespace Abobus.Domain;
 
 public interface IGameConfig
 {
-    public string Name { get; }
+    string Name { get; }
 
-    public T Get<T>(string key, T fallback) where T : notnull;
+    T Get<T>(string key, T fallback) where T : notnull;
 }
