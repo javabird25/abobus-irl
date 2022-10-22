@@ -12,13 +12,13 @@ public sealed class Game : IGame
         private set
         {
             _gameState = value;
-            GameStateChanged?.Invoke(value);
+            OnGameStateChange?.Invoke(value);
         }
     }
 
     private IGameState _gameState = new LobbyGameState();
 
-    public event Action<IGameState>? GameStateChanged;
+    public event Action<IGameState>? OnGameStateChange;
     private readonly IGameConfig _config;
 
     public Game(IMap map, IGameConfig config)

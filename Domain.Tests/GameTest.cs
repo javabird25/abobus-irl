@@ -26,7 +26,7 @@ public sealed class GameTest
     [Fact]
     public void Start_ChangesGameStateToPlaying()
     {
-        _game.GameStateChanged += state => state.Id.Should().Be("playing");
+        _game.OnGameStateChange += state => state.Id.Should().Be("playing");
 
         _game.Start();
     }

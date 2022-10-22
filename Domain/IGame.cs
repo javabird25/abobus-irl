@@ -10,7 +10,7 @@ public interface IGame
 
     IGameState GameState { get; }
 
-    event Action<IGameState>? GameStateChanged;
+    event Action<IGameState>? OnGameStateChange;
 
     Guid JoinPlayer(string name);
 
