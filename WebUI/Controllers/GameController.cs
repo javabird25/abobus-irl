@@ -1,12 +1,11 @@
-using Microsoft.AspNetCore.Mvc;
-
 namespace Abobus.WebUI.Controllers;
 
+using Microsoft.AspNetCore.Mvc;
 using Application;
 using Domain;
 
 [ApiController]
-[Route("[controller]/[action]")]
+[Route("api/[controller]/[action]")]
 public sealed class GameController : ControllerBase
 {
     private readonly IGameRepository _gameRepository;
@@ -17,7 +16,7 @@ public sealed class GameController : ControllerBase
     }
 
     [HttpPost]
-    public IActionResult Create(CreateGameRequest request)
+    public IActionResult Create([FromBody] CreateGameRequest request)
     {
         var (game, password) = _gameRepository.CreateGame("default", request.GameConfigName);
         game.JoinPlayer(request.Name);
@@ -26,7 +25,7 @@ public sealed class GameController : ControllerBase
     }
 
     [HttpPost]
-    [Route("[controller]/[action]/{gamePassword:int}")]
+    [Route("api/[controller]/[action]/{gamePassword:int}")]
     public IActionResult Join(JoinGameRequest request, int gamePassword)
     {
         var game = _gameRepository.GetGameByPassword(new GamePassword(gamePassword));
